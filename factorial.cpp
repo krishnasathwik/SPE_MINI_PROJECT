@@ -15,3 +15,4 @@ unique_ptr<Operation> OperationFactory::createOperation(const string &type) {
 
 //added to check for auto build
 //check2
+//check3
