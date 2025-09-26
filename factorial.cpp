@@ -12,3 +12,5 @@ unique_ptr<Operation> OperationFactory::createOperation(const string &type) {
     if (type == "factorial") return make_unique<FactorialCalculator>();
     return nullptr;
 }
+
+//added to check for auto build
