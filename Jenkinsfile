@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                git branch: 'main',
                 git 'https://github.com/krishnasathwik/SPE_MINI_PROJECT'
             }
         }
