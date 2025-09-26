@@ -1,0 +1,30 @@
+- hosts: local
+  become: yes
+  collections:
+    - community.docker
+  tasks:
+    - name: Ensure Docker is installed
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Pull the latest calculator Docker image
+      docker_image:
+        name: sathwik049/scientific-calculator
+        source: pull
+
+    - name: Stop any existing container named calc
+      docker_container:
+        name: calc
+        state: absent
+        force_kill: yes
+
+    - name: Run the calculator container in background
+      docker_container:
+        name: calc
+        image: sathwik049/scientific-calculator:latest
+        state: started
+        tty: yes
+        interactive: yes
+        detach: yes  # runs in background
