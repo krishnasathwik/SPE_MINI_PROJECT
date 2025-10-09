@@ -45,20 +45,32 @@ pipeline {
             }
         }
     }
-     post {
+
+    post {
         success {
+            echo "✅ Build succeeded — sending success email..."
             emailext(
-                subject: "Jenkins Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Good news! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} was successful.\n\nCheck it here: ${env.BUILD_URL}",
-                to: "krishnasathwikmannepalli@gmail.com"
+                subject: "✅ Jenkins Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """<p>Good news! The build for <b>${env.JOB_NAME} #${env.BUILD_NUMBER}</b> was successful.</p>
+                         <p>Check the details here: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>""",
+                to: "krishnasathwikmannepalli@gmail.com",
+                mimeType: 'text/html'
             )
         }
+
         failure {
+            echo "❌ Build failed — sending failure email..."
             emailext(
-                subject: "Jenkins Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Oops! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} failed.\n\nCheck the console output: ${env.BUILD_URL}",
-                to: "krishnasathwikmannepalli@gmail.com"
+                subject: "❌ Jenkins Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """<p>Oops! The build for <b>${env.JOB_NAME} #${env.BUILD_NUMBER}</b> failed.</p>
+                         <p>Check the console output here: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>""",
+                to: "krishnasathwikmannepalli@gmail.com",
+                mimeType: 'text/html'
             )
+        }
+
+        always {
+            echo "📨 Email notification stage completed."
         }
     }
 }
