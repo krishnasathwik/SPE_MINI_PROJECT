@@ -9,3 +9,5 @@ long double PowerCommand::execute() {
 long double Invoker::run(Command &cmd) {
     return cmd.execute();
 }
+
+//simple change
