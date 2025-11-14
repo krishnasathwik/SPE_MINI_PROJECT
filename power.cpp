@@ -10,4 +10,4 @@ long double Invoker::run(Command &cmd) {
     return cmd.execute();
 }
 
-//simple chang
+//simple changee
