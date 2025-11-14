@@ -48,9 +48,9 @@ pipeline {
 
     post {
         success {
-            echo "✅ Build succeeded — sending success email..."
+            echo " Build succeeded — sending success email..."
             emailext(
-                subject: "✅ Jenkins Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                subject: "Jenkins Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """<p>Good news! The build for <b>${env.JOB_NAME} #${env.BUILD_NUMBER}</b> was successful.</p>
                          <p>Check the details here: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>""",
                 to: "krishnasathwikmannepalli@gmail.com",
@@ -59,9 +59,9 @@ pipeline {
         }
 
         failure {
-            echo "❌ Build failed — sending failure email..."
+            echo " Build failed — sending failure email..."
             emailext(
-                subject: "❌ Jenkins Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                subject: " Jenkins Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """<p>Oops! The build for <b>${env.JOB_NAME} #${env.BUILD_NUMBER}</b> failed.</p>
                          <p>Check the console output here: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>""",
                 to: "krishnasathwikmannepalli@gmail.com",
@@ -70,7 +70,7 @@ pipeline {
         }
 
         always {
-            echo "📨 Email notification stage completed."
+            echo " Email notification stage completed."
         }
     }
 }
