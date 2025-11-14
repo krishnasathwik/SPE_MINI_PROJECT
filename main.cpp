@@ -7,11 +7,11 @@ using namespace std;
 #include "power.h"
 
 int main() {
-    cout << "=== Scientific Calculator (4 Design Patterns) ===\n";
-    cout << "1) Square Root (Singleton)\n";
-    cout << "2) Factorial (Factory)\n";
-    cout << "3) Natural Logarithm (Strategy)\n";
-    cout << "4) Power (Command)\n";
+    cout << "=== Scientific Calculator  ===\n";
+    cout << "1) Square Root \n";
+    cout << "2) Factorial \n";
+    cout << "3) Natural Logarithm \n";
+    cout << "4) Power \n";
     cout << "0) Exit\n";
 
     while (true) {
